@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Kalkulator Majów</title>
+
+	<script src="js/mayan-system.js"></script>
+	<link rel="stylesheet" href="css/style.css" />
+	<link rel="icon" href="favicon.ico" />
+</head>
+<body>
+
+	<header class="card" id="main-header">
+		<img src="favicon.ico" alt="ikona"/>
+		<h1>Konwerter z systemu dziesiętnego na system Majów</h1>
+		<img src="favicon.ico" alt="ikona"/>
+	</header>
+
+	<section class="card">
+		<h2>Wprowadź liczbę, którą chcesz zamienić:</h2>
+		<form id="form-number">
+			<input type="number" id="form-number-input" value="0" min="0"/>
+			<input type="submit" value="Przelicz!" id="form-number-submit" />
+		</form>
+	</section>
+
+	<section class="card">
+		<h2>Twoja liczba:</h2>
+		<div id="mayan-number-container">
+			(???)
+		</div>
+	</section>
+
+	<section class="card" id="system-explanation">
+		<h2>Informacje o używanym systemie:</h2>
+		<p>System wykorzystywany w powyższym kalkulatorze jest systemem liczbowym o podstawie 20, w którym poszczególne cyfry są zapisywane pionowo (od najwyższej wagi u góry, do najniższej wagi u dołu).</p>
+		<p>
+			Tak wyglądają cyfry wykorzystywane w systemie liczbowym Majów:
+		</p>
+		<img src="img/digits-presentation.svg" alt="cyfry starożytnych Majów" />
+	</section>
+
+	<section class="card" id="system-explanation">
+		<h2>Źrodła:</h2>
+		<p>
+			Artykuł, w oparciu w o którym został wykonany kalkulator:
+			<a href="https://en.wikipedia.org/wiki/Maya_numerals" target="_blank">(link: Wikipedia)</a>
+		</p>
+		<p>
+			Grafika wykorzystywana jako ikona:
+			<a href="https://www.maxpixel.net/Aztec-Symbol-Skull-Symbol-Mayan-Toltec-Aztec-37936" target="_blank">(link: maxpixel.net)</a>, utwór na licencji CC0 Public Domain 
+		</p>
+		<p>
+			Grafika przedstawiająca cyfry Majów:
+			<a href="https://pl.wikipedia.org/wiki/Cyfry_Maj%C3%B3w#/media/Plik:Maya.svg" target="_blank">(link: Wikipedia)</a>, autor Bryan Derksen, utwór na licencji CC BY-SA 3.0
+		</p>
+	</section>
+
+	<footer class="card" id="main-footer">
+		Wykonał: Daniel Rogowski<br />
+		Politechnika Bydgoska<br />
+	</footer>
+
+	<script src="js/mayan-form-handler.js"></script>
+</body>
+</html>
