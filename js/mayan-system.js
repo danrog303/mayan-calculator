@@ -1,6 +1,6 @@
 'use strict';
 /*
-    Author: Daniel Rogowski [danrog000@pbs.edu.pl]
+    Autor: Daniel Rogowski [danrog000@pbs.edu.pl]
     Politechnika Bydgoska, 16.11.2021
 */
 
@@ -27,7 +27,7 @@ function convertToBase20(toConvert) {
 }
 
 /**
-    Generates HTML code for a single Mayan digit (from 0 to 19)
+    Generuje kod HTML wskazanej cyfry Majów (od 0 do 19)
 **/
 function getDigitHtml(digit) {
     let output = "";
