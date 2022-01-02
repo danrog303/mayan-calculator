@@ -1,11 +1,11 @@
 'use strict';
 /*
-    Autor: Daniel Rogowski [danrog000@pbs.edu.pl]
-    Politechnika Bydgoska, 16.11.2021
+    Author: Daniel Rogowski [danrog000@pbs.edu.pl]
+    Bydgoszcz University of Science and Technology, 16.11.2021
 */
 
 /**
-    Konwertuje liczbę postaci 2020 do postaci tablicy [4, 19, 19]
+    Convers specified number (like 2020) to base 20 digits array (like [4, 19, 19])
 **/
 function convertToBase20(toConvert) {
     let output = [];
@@ -27,7 +27,7 @@ function convertToBase20(toConvert) {
 }
 
 /**
-    Generuje kod HTML wskazanej cyfry Majów (od 0 do 19)
+    Generates HTML code for a given Mayan digit
 **/
 function getDigitHtml(digit) {
     let output = "";
