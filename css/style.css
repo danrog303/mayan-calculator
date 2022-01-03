@@ -56,4 +56,5 @@ img.digit-point {
 
 #main-header img {
     max-width: 30px;
+    display: inline-block;
 }
