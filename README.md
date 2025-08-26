@@ -1,12 +1,12 @@
-# mayan-calculator
-> A web application, which converts numbers from the decimal system to the Mayan number system.
+# React + Vite
 
-## What is the Mayan number system?
-The system used in this calculator is a base 20 number system in which the individual digits are written vertically (from highest weight at the top, to lowest weight at the bottom).
-You can read more about this system [here](https://en.wikipedia.org/wiki/Maya_numerals).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## How can i use this application?
-This application is hosted online, on https://danrog303.github.io/mayan-calculator
+Currently, two official plugins are available:
 
-## Technologies used
-The application runs entirely on the client side. Pure HTML + CSS + JavaScript was used to create the page, without using any additional frameworks.
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
