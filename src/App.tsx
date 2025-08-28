@@ -165,23 +165,25 @@ function App() {
         </Box>
 
         {/* Advertisement Placeholder - Middle */}
-        <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
-          <Box sx={{
-            width: '100%',
-            height: 250,
-            bgcolor: 'grey.200',
-            borderRadius: 2,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            border: '2px dashed',
-            borderColor: 'grey.400'
-          }}>
-            <Typography variant="body2" color="text.secondary">
-              Large Advertisement Banner
-            </Typography>
+        <Slide direction="up" in timeout={1300}>
+          <Box sx={{ display: 'flex', justifyContent: 'center', mb: 4 }}>
+            <Box sx={{
+              width: '100%',
+              height: 250,
+              bgcolor: 'grey.200',
+              borderRadius: 2,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              border: '2px dashed',
+              borderColor: 'grey.400'
+            }}>
+              <Typography variant="body2" color="text.secondary">
+                Large Advertisement Banner
+              </Typography>
+            </Box>
           </Box>
-        </Box>
+        </Slide>
 
         {/* Information Section */}
         <Slide direction="up" in timeout={1400}>
@@ -248,42 +250,44 @@ function App() {
         </Slide>
 
         {/* Advertisement Placeholder - Sidebar Style */}
-        <Box sx={{ display: 'flex', gap: 4, mb: 4 }}>
-          <Box sx={{ flex: 1 }}>
-            <Box sx={{
-              width: '100%',
-              height: 300,
-              bgcolor: 'grey.200',
-              borderRadius: 2,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px dashed',
-              borderColor: 'grey.400'
-            }}>
-              <Typography variant="body2" color="text.secondary">
-                Sidebar Advertisement
-              </Typography>
+        <Slide direction="up" in timeout={1500}>
+          <Box sx={{ display: 'flex', gap: 4, mb: 4 }}>
+            <Box sx={{ flex: 1 }}>
+              <Box sx={{
+                width: '100%',
+                height: 300,
+                bgcolor: 'grey.200',
+                borderRadius: 2,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '2px dashed',
+                borderColor: 'grey.400'
+              }}>
+                <Typography variant="body2" color="text.secondary">
+                  Sidebar Advertisement
+                </Typography>
+              </Box>
+            </Box>
+            <Box sx={{ flex: 1 }}>
+              <Box sx={{
+                width: '100%',
+                height: 300,
+                bgcolor: 'grey.200',
+                borderRadius: 2,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: '2px dashed',
+                borderColor: 'grey.400'
+              }}>
+                <Typography variant="body2" color="text.secondary">
+                  Sidebar Advertisement
+                </Typography>
+              </Box>
             </Box>
           </Box>
-          <Box sx={{ flex: 1 }}>
-            <Box sx={{
-              width: '100%',
-              height: 300,
-              bgcolor: 'grey.200',
-              borderRadius: 2,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              border: '2px dashed',
-              borderColor: 'grey.400'
-            }}>
-              <Typography variant="body2" color="text.secondary">
-                Sidebar Advertisement
-              </Typography>
-            </Box>
-          </Box>
-        </Box>
+        </Slide>
 
         {/* Sources Section */}
         <Slide direction="up" in timeout={1600}>
