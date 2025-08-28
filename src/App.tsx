@@ -15,6 +15,7 @@ import {
 } from '@mui/material';
 import { Calculate, History, Info, School } from '@mui/icons-material';
 import MayaNumber from './components/MayaNumber';
+import CookieConsent from './components/CookieConsent';
 import { convertToBase20 } from './lib/maya';
 
 function App() {
@@ -363,9 +364,48 @@ function App() {
               This Maya numeral converter is a free educational tool for converting decimal numbers to the ancient Maya number system. 
               Perfect for students, researchers, and anyone interested in Maya mathematics and history.
             </Typography>
+            <Box sx={{ mt: 2, display: 'flex', justifyContent: 'center', gap: 2, flexWrap: 'wrap' }}>
+              <Typography 
+                variant="caption" 
+                component="button" 
+                onClick={() => {
+                  const settingsModal = document.createElement('div');
+                  settingsModal.id = 'privacy-settings-modal';
+                  document.body.appendChild(settingsModal);
+                  // This would ideally open a modal with PrivacySettings component
+                  alert('Ustawienia prywatności - funkcjonalność w rozwoju. Możesz zarządzać cookies przez ustawienia przeglądarki.');
+                }}
+                sx={{ 
+                  color: 'text.secondary', 
+                  textDecoration: 'underline',
+                  cursor: 'pointer',
+                  border: 'none',
+                  background: 'none',
+                  '&:hover': { color: 'primary.main' }
+                }}
+              >
+                Ustawienia prywatności
+              </Typography>
+              <Typography variant="caption" color="text.secondary">•</Typography>
+              <Typography 
+                variant="caption" 
+                component="a" 
+                href="mailto:contact@danielrogowski.net?subject=RODO"
+                sx={{ 
+                  color: 'text.secondary', 
+                  textDecoration: 'underline',
+                  '&:hover': { color: 'primary.main' }
+                }}
+              >
+                Polityka prywatności
+              </Typography>
+            </Box>
           </Box>
         </Fade>
       </Container>
+      
+      {/* GDPR Cookie Consent Banner */}
+      <CookieConsent />
     </Box>
   );
 }
