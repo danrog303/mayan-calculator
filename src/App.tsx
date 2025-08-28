@@ -60,29 +60,9 @@ function App() {
           <Card sx={{ mb: 4, textAlign: 'center', position: 'relative', overflow: 'visible' }}>
             <CardContent sx={{ py: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2 }}>
-                <img 
-                  src="/favicon.png" 
-                  alt="Maya Icon" 
-                  style={{ 
-                    width: 48, 
-                    height: 48, 
-                    marginRight: 16,
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
-                  }} 
-                />
                 <Typography variant="h3" component="h1" sx={{ fontWeight: 600 }}>
                   Maya Numeral Converter
                 </Typography>
-                <img 
-                  src="/favicon.png" 
-                  alt="Maya Icon" 
-                  style={{ 
-                    width: 48, 
-                    height: 48, 
-                    marginLeft: 16,
-                    filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.1))'
-                  }} 
-                />
               </Box>
               <Typography variant="h6" color="text.secondary" sx={{ maxWidth: 600, mx: 'auto' }}>
                 Free online Maya numeral converter. Convert decimal numbers to the ancient Maya number system instantly.
