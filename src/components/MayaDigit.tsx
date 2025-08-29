@@ -50,7 +50,7 @@ export default function MayaDigit({ value }: Props) {
                     fontWeight: 'bold',
                     textShadow: '0 1px 2px rgba(0,0,0,0.1)',
                     lineHeight: 1,
-                    fontFamily: 'serif'
+                    fontFamily: '"Noto Sans Symbols 2", sans-serif'
                 }}
             >
                 {MAYA_CHARS[value]}

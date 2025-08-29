@@ -13,7 +13,7 @@ import {
   useTheme,
   useMediaQuery,
 } from '@mui/material';
-import { Calculate, History, Info, School } from '@mui/icons-material';
+import { Calculate, TempleBuddhist, History, Info, School } from '@mui/icons-material';
 import MayaNumber from './components/MayaNumber';
 import CookieConsent from './components/CookieConsent';
 import { convertToBase20 } from './lib/maya';
@@ -61,7 +61,8 @@ function App() {
           <Card sx={{ mb: 4, textAlign: 'center', position: 'relative', overflow: 'visible' }}>
             <CardContent sx={{ py: 4 }}>
               <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', mb: 2 }}>
-                <Typography variant="h3" component="h1" sx={{ fontWeight: 600 }}>
+                <TempleBuddhist sx={{ mr: 2, color: 'primary.main', fontSize: "2rem", display: { xs: "none", sm: "inline-flex" }}} />
+                <Typography variant="h3" component="h1" sx={{ fontWeight: 400, fontSize: "2rem" }}>
                   Maya Numeral Converter
                 </Typography>
               </Box>
@@ -230,9 +231,8 @@ function App() {
                             variant="h6" 
                             sx={{ 
                               fontSize: '1.5rem',
-                              color: 'primary.main',
-                              fontWeight: 'bold',
-                              fontFamily: 'serif'
+                              fontFamily: '"Noto Sans Symbols 2", sans-serif',
+                              fontWeight: 'bold'
                             }}
                           >
                             {String.fromCodePoint(0x1D2E0 + num)}
