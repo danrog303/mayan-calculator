@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "postbuild": "react-snap"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -27,8 +28,17 @@
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
+    "react-snap": "^1.23.0",
     "sass": "^1.91.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.2"
-  }
+  },
+  "reactSnap": {
+    "puppeteer": true,
+    "puppeteerArgs": ["--no-sandbox"],
+    "source": "dist"
+  },
+  "browserslist": [
+    "> 0.01%"
+  ]
 }
