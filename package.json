@@ -4,11 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "react-router dev",
+    "build": "react-router build",
     "lint": "eslint .",
-    "preview": "vite preview",
-    "postbuild": "react-snap"
+    "preview": "npx serve build/client",
+    "typecheck": "react-router typegen && tsc",
+    "postbuild": "node contrib/generate-sitemap.js && node contrib/generate-404.js"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -16,29 +17,24 @@
     "@fontsource/roboto": "^5.2.6",
     "@mui/icons-material": "^7.3.1",
     "@mui/material": "^7.3.1",
+    "@react-router/node": "^7.13.1",
     "react": "^19.1.1",
-    "react-dom": "^19.1.1"
+    "react-dom": "^19.1.1",
+    "react-router": "^7.13.1",
+    "react-router-dom": "^7.13.1",
+    "isbot": "^5"
   },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
+    "@react-router/dev": "^7.13.1",
     "@types/react": "^19.1.11",
     "@types/react-dom": "^19.1.8",
-    "@vitejs/plugin-react": "^5.0.0",
     "eslint": "^9.33.0",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-react-refresh": "^0.4.20",
     "globals": "^16.3.0",
-    "react-snap": "^1.23.0",
     "sass": "^1.91.0",
     "typescript": "^5.9.2",
     "vite": "^7.1.2"
-  },
-  "reactSnap": {
-    "puppeteer": true,
-    "puppeteerArgs": ["--no-sandbox"],
-    "source": "dist"
-  },
-  "browserslist": [
-    "> 0.01%"
-  ]
+  }
 }

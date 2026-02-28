@@ -13,7 +13,7 @@
     "strict": true,
     "noUncheckedIndexedAccess": true
   },
-  "include": ["src"]
+  "include": ["src", ".react-router/types/**/*"]
 }
 
 

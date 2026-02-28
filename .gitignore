@@ -81,6 +81,13 @@ jspm_packages/
 # Vite cache
 .vite
 
+# React Router generated types
+.react-router/
+
+# AI stuff
+.claude
+CLAUDE.MD
+
 # Next.js build output
 .next
 

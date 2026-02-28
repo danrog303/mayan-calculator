@@ -49,13 +49,16 @@ jobs:
       - name: Build project
         run: npm run build
       
-      - name: Remove react-snap fallback file
-        run: rm dist/200.html
-
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist/ --project-name=maya-calc
+          command: pages deploy build/client/ --project-name=maya-calc
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Purge Cloudflare cache
+        uses: jakejarvis/cloudflare-purge-action@master
+        env:
+          CLOUDFLARE_ZONE: ${{ secrets.CLOUDFLARE_ZONE_ID }}
+          CLOUDFLARE_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

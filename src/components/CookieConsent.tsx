@@ -1,12 +1,9 @@
 import { useState, useEffect } from 'react';
 import {
   Box,
-  Card,
-  CardContent,
   Typography,
   Button,
   IconButton,
-  Link,
   Slide,
   useTheme,
   useMediaQuery,
@@ -18,6 +15,12 @@ interface CookieConsentProps {
   onDecline?: () => void;
 }
 
+declare global {
+  interface Window {
+    grantAnalyticsConsent?: () => void;
+  }
+}
+
 const CookieConsent = ({ onAccept, onDecline }: CookieConsentProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
@@ -25,12 +28,9 @@ const CookieConsent = ({ onAccept, onDecline }: CookieConsentProps) => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   useEffect(() => {
-    // Check if user has already made a choice
     const consent = localStorage.getItem('gdpr-analytics-consent');
     const hasChoiceMade = consent === 'true' || consent === 'false';
-    
     if (!hasChoiceMade) {
-      // Show banner after a short delay
       const timer = setTimeout(() => setIsVisible(true), 2000);
       return () => clearTimeout(timer);
     }
@@ -51,7 +51,6 @@ const CookieConsent = ({ onAccept, onDecline }: CookieConsentProps) => {
   };
 
   const handleClose = () => {
-    // If user closes without choosing, default to decline
     handleDecline();
   };
 
@@ -66,96 +65,132 @@ const CookieConsent = ({ onAccept, onDecline }: CookieConsentProps) => {
           left: 0,
           right: 0,
           zIndex: 9999,
-          p: 2
+          p: { xs: 1.5, md: 2.5 },
         }}
       >
-        <Card
+        <Box
           sx={{
-            maxWidth: 800,
+            maxWidth: 820,
             mx: 'auto',
-            boxShadow: '0 8px 32px rgba(0, 0, 0, 0.3)',
-            border: '1px solid',
-            borderColor: 'divider',
+            bgcolor: '#FFFFFF',
+            border: '1px solid rgba(123,63,30,0.2)',
+            boxShadow: '0 -4px 40px rgba(123,63,30,0.12), 0 -1px 0 rgba(123,63,30,0.08)',
+            p: { xs: 2.5, md: 3.5 },
+            position: 'relative',
           }}
         >
-          <CardContent sx={{ p: 3, position: 'relative' }}>
-            <IconButton
-              onClick={handleClose}
-              sx={{
-                position: 'absolute',
-                top: 8,
-                right: 8,
-                color: 'text.secondary',
-              }}
-              size="small"
-            >
-              <Close />
-            </IconButton>
+          {/* Close button */}
+          <IconButton
+            onClick={handleClose}
+            size="small"
+            sx={{
+              position: 'absolute',
+              top: 10,
+              right: 10,
+            }}
+          >
+            <Close fontSize="small" />
+          </IconButton>
 
-            <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2, mb: 2 }}>
-              <Cookie sx={{ color: 'primary.main', mt: 0.5 }} />
-              <Box sx={{ flex: 1 }}>
-                <Typography variant="h6" component="h3" gutterBottom>
-                  Cookie Information
-                </Typography>
-                <Typography variant="body2" color="text.secondary" paragraph>
-                  This website uses Google Analytics to analyze traffic. Cookies help us 
-                  understand how users interact with our site and improve its functionality.
-                </Typography>
+          <Box sx={{ display: 'flex', alignItems: 'flex-start', gap: 2 }}>
+            <Cookie sx={{ color: 'primary.main', mt: 0.3, opacity: 0.6, flexShrink: 0 }} />
 
-                {showDetails && (
-                  <Box sx={{ mb: 2, p: 2, bgcolor: 'grey.50', borderRadius: 1 }}>
-                    <Typography variant="body2" gutterBottom>
-                      <strong>What data we collect:</strong>
-                    </Typography>
-                    <Typography variant="body2" component="ul" sx={{ pl: 2, mb: 1 }}>
-                      <li>Anonymous data about page visits</li>
-                      <li>Device and browser information</li>
-                      <li>Time spent on the website</li>
-                      <li>Traffic sources (anonymized)</li>
-                    </Typography>
-                    <Typography variant="body2">
-                      <strong>Your rights:</strong> You can change your cookie preferences 
-                      at any time. Data is anonymized and compliant with GDPR.
-                    </Typography>
-                  </Box>
-                )}
+            <Box sx={{ flex: 1, pr: 3 }}>
+              {/* Eyebrow */}
+              <Typography sx={{
+                fontFamily: '"Playfair Display", serif',
+                fontSize: '0.875rem',
+                letterSpacing: '0.15em',
+                fontWeight: 600,
+                color: 'primary.main',
+                mb: 0.8,
+                textTransform: 'uppercase',
+                opacity: 0.8,
+              }}>
+                Privacy
+              </Typography>
 
-                <Box sx={{ 
-                  display: 'flex', 
-                  flexDirection: isMobile ? 'column' : 'row',
-                  gap: 1,
-                  alignItems: isMobile ? 'stretch' : 'center',
-                  flexWrap: 'wrap'
+              <Typography sx={{
+                fontFamily: '"Playfair Display", serif',
+                fontSize: '0.95rem',
+                color: 'text.primary',
+                mb: 1,
+                letterSpacing: '0.04em',
+              }}>
+                Cookie Information
+              </Typography>
+
+              <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2, lineHeight: 1.8, fontSize: '0.85rem' }}>
+                This website uses Google Analytics to understand how visitors interact with our site.
+                Your data is anonymized and compliant with GDPR.
+              </Typography>
+
+              {/* Expandable details */}
+              {showDetails && (
+                <Box sx={{
+                  mb: 2.5,
+                  p: 2.5,
+                  border: '1px solid rgba(123,63,30,0.12)',
+                  bgcolor: 'rgba(123,63,30,0.025)',
                 }}>
-                  <Button
-                    variant="contained"
-                    onClick={handleAccept}
-                    sx={{ minWidth: 120 }}
-                  >
-                    Accept
-                  </Button>
-                  <Button
-                    variant="outlined"
-                    onClick={handleDecline}
-                    sx={{ minWidth: 120 }}
-                  >
-                    Decline
-                  </Button>
-                  <Button
-                    variant="text"
-                    startIcon={<Settings />}
-                    onClick={() => setShowDetails(!showDetails)}
-                    size="small"
-                    sx={{ ml: isMobile ? 0 : 1 }}
-                  >
-                    {showDetails ? 'Hide details' : 'More information'}
-                  </Button>
+                  <Typography variant="body2" sx={{ color: 'primary.main', mb: 1.5, fontFamily: '"Playfair Display", serif', fontSize: '0.875rem', fontWeight: 600, letterSpacing: '0.1em' }}>
+                    WHAT WE COLLECT
+                  </Typography>
+                  <Box component="ul" sx={{ m: 0, p: 0, listStyle: 'none' }}>
+                    {[
+                      'Anonymous page visit data',
+                      'Device and browser type',
+                      'Time spent on the site',
+                      'Anonymized traffic sources',
+                    ].map((item) => (
+                      <Box component="li" key={item} sx={{ display: 'flex', alignItems: 'center', gap: 1.5, mb: 0.8 }}>
+                        <Box sx={{ width: 3, height: 3, bgcolor: 'rgba(123,63,30,0.4)', transform: 'rotate(45deg)', flexShrink: 0 }} />
+                        <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.82rem', lineHeight: 1.6 }}>
+                          {item}
+                        </Typography>
+                      </Box>
+                    ))}
+                  </Box>
+                  <Typography variant="body2" sx={{ color: 'text.secondary', fontSize: '0.82rem', lineHeight: 1.7, mt: 1.5 }}>
+                    You may withdraw consent at any time. All data is processed in accordance with GDPR.
+                  </Typography>
                 </Box>
+              )}
+
+              {/* Action buttons */}
+              <Box sx={{
+                display: 'flex',
+                flexDirection: isMobile ? 'column' : 'row',
+                gap: 1.5,
+                alignItems: isMobile ? 'stretch' : 'center',
+              }}>
+                <Button
+                  variant="contained"
+                  onClick={handleAccept}
+                  sx={{ minWidth: 110, py: 1.1, fontSize: '0.875rem' }}
+                >
+                  Accept
+                </Button>
+                <Button
+                  variant="outlined"
+                  onClick={handleDecline}
+                  sx={{ minWidth: 110, py: 1.1, fontSize: '0.875rem' }}
+                >
+                  Decline
+                </Button>
+                <Button
+                  variant="text"
+                  startIcon={<Settings fontSize="small" />}
+                  onClick={() => setShowDetails(!showDetails)}
+                  size="small"
+                  sx={{ fontSize: '0.875rem', ml: isMobile ? 0 : 0.5 }}
+                >
+                  {showDetails ? 'Hide details' : 'More information'}
+                </Button>
               </Box>
             </Box>
-          </CardContent>
-        </Card>
+          </Box>
+        </Box>
       </Box>
     </Slide>
   );

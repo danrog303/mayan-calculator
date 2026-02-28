@@ -1,4 +1,3 @@
-import React from 'react';
 import { Box, Typography } from '@mui/material';
 
 type Props = { value: number };
@@ -33,26 +32,24 @@ export default function MayaDigit({ value }: Props) {
     }
 
     return (
-        <Box sx={{ 
-            textAlign: 'center', 
-            p: 1,
-            minWidth: 80,
+        <Box sx={{
+            textAlign: 'center',
+            px: 2,
+            py: 0.5,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
-            justifyContent: 'center'
+            justifyContent: 'center',
         }}>
-            <Typography 
-                variant="h2" 
-                sx={{ 
-                    fontSize: '2.5rem',
-                    color: 'primary.main',
-                    fontWeight: 'bold',
-                    textShadow: '0 1px 2px rgba(0,0,0,0.1)',
-                    lineHeight: 1,
-                    fontFamily: '"Noto Sans Symbols 2", sans-serif'
-                }}
-            >
+            <Typography sx={{
+                fontSize: { xs: '3.8rem', md: '4.8rem' },
+                fontFamily: '"Noto Sans Symbols 2", sans-serif',
+                color: 'primary.main',
+                lineHeight: 1,
+                display: 'block',
+                // Subtle warm shadow — like ink on parchment
+                textShadow: '0 2px 8px rgba(123,63,30,0.15)',
+            }}>
                 {MAYA_CHARS[value]}
             </Typography>
         </Box>
