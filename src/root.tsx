@@ -1,8 +1,21 @@
+import { lazy, Suspense } from "react";
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 import type { MetaFunction } from "react-router";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
-import CookieConsent from "./components/CookieConsent";
+import { gaScript } from "./lib/analytics";
+import { ldJson } from "./lib/structured-data";
+import '@fontsource/playfair-display/400.css';
+import '@fontsource/playfair-display/400-italic.css';
+import '@fontsource/playfair-display/600.css';
+import '@fontsource/playfair-display/700.css';
+import '@fontsource/lora/400.css';
+import '@fontsource/lora/400-italic.css';
+import '@fontsource/lora/500.css';
+import '@fontsource/lora/500-italic.css';
+import '@fontsource/lora/600.css';
+
+const CookieConsent = lazy(() => import("./components/CookieConsent"));
 
 export const meta: MetaFunction = () => {
   return [
@@ -38,7 +51,7 @@ const theme = createTheme({
     },
     text: {
       primary: "#231812",
-      secondary: "#7A6555",
+      secondary: "#5A4030",
     },
     divider: "rgba(123, 63, 30, 0.14)",
   },
@@ -207,111 +220,20 @@ const theme = createTheme({
   },
 });
 
-const gaScript = `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-
-  function loadAnalytics() {
-    if (window.gtagInitialized) return;
-    window.gtagInitialized = true;
-    var script = document.createElement('script');
-    script.async = true;
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=G-38K3HDMFV9';
-    document.head.appendChild(script);
-    script.onload = function() {
-      gtag('js', new Date());
-      gtag('config', 'G-38K3HDMFV9', {
-        anonymize_ip: true,
-        cookie_flags: 'max-age=7776000;secure;samesite=none'
-      });
-    };
-  }
-
-  var hasConsent = localStorage.getItem('gdpr-analytics-consent') === 'true';
-  if (hasConsent) { loadAnalytics(); }
-
-  window.grantAnalyticsConsent = function() {
-    localStorage.setItem('gdpr-analytics-consent', 'true');
-    loadAnalytics();
-  };
-
-  window.revokeAnalyticsConsent = function() {
-    localStorage.setItem('gdpr-analytics-consent', 'false');
-    document.cookie = '_ga=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie = '_ga_G-38K3HDMFV9=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-  };
-`;
-
-const ldJson = JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  name: "Maya Numeral Converter",
-  description:
-    "Free online tool to convert decimal numbers to the ancient Maya vigesimal (base-20) number system using authentic Maya Unicode characters.",
-  url: "https://mayacalc.danielrogowski.net/",
-  applicationCategory: "EducationalApplication",
-  operatingSystem: "Web Browser",
-  inLanguage: "en",
-  isAccessibleForFree: true,
-  datePublished: "2024-01-01",
-  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  potentialAction: {
-    "@type": "UseAction",
-    target: "https://mayacalc.danielrogowski.net/",
-  },
-  author: {
-    "@type": "Person",
-    name: "Daniel Rogowski",
-    url: "https://danielrogowski.net/",
-    affiliation: {
-      "@type": "Organization",
-      name: "Bydgoszcz University of Science and Technology",
-      url: "https://pbs.edu.pl",
-    },
-  },
-  keywords: [
-    "Maya numeral converter",
-    "decimal to Maya",
-    "Maya number system",
-    "vigesimal converter",
-    "Maya numerals calculator",
-    "ancient Maya numbers",
-    "base-20 system",
-  ],
-  featureList: [
-    "Convert decimal numbers to Maya numerals",
-    "Authentic Maya Unicode characters (U+1D2E0–U+1D2F3)",
-    "Educational information about the Maya vigesimal system",
-    "Free to use, no registration required",
-    "Instant conversion results",
-  ],
-});
 
 export default function Root() {
   return (
     <html lang="en">
       <head>
-        {/* GDPR Consent Management / Google Analytics */}
         <script dangerouslySetInnerHTML={{ __html: gaScript }} />
-
         <meta charSet="UTF-8" />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#7B3F1E" />
-
-
-
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: ldJson }}
-        />
-
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: ldJson }} />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Noto+Sans+Symbols+2&display=swap"
-          rel="stylesheet"
-        />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Symbols+2&display=swap" />
 
         <Meta />
         <Links />
@@ -319,8 +241,12 @@ export default function Root() {
       <body>
         <ThemeProvider theme={theme}>
           <CssBaseline />
-          <Outlet />
-          <CookieConsent />
+          <main>
+            <Outlet />
+          </main>
+          <Suspense fallback={null}>
+            <CookieConsent />
+          </Suspense>
         </ThemeProvider>
         <ScrollRestoration />
         <Scripts />

@@ -1,0 +1,44 @@
+export const ldJson = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Maya Numeral Converter",
+  description:
+    "Free online tool to convert decimal numbers to the ancient Maya vigesimal (base-20) number system using authentic Maya Unicode characters.",
+  url: "https://mayacalc.danielrogowski.net/",
+  applicationCategory: "EducationalApplication",
+  operatingSystem: "Web Browser",
+  inLanguage: "en",
+  isAccessibleForFree: true,
+  datePublished: "2024-01-01",
+  offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+  potentialAction: {
+    "@type": "UseAction",
+    target: "https://mayacalc.danielrogowski.net/",
+  },
+  author: {
+    "@type": "Person",
+    name: "Daniel Rogowski",
+    url: "https://danielrogowski.net/",
+    affiliation: {
+      "@type": "Organization",
+      name: "Bydgoszcz University of Science and Technology",
+      url: "https://pbs.edu.pl",
+    },
+  },
+  keywords: [
+    "Maya numeral converter",
+    "decimal to Maya",
+    "Maya number system",
+    "vigesimal converter",
+    "Maya numerals calculator",
+    "ancient Maya numbers",
+    "base-20 system",
+  ],
+  featureList: [
+    "Convert decimal numbers to Maya numerals",
+    "Authentic Maya Unicode characters (U+1D2E0–U+1D2F3)",
+    "Educational information about the Maya vigesimal system",
+    "Free to use, no registration required",
+    "Instant conversion results",
+  ],
+});

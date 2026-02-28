@@ -83,6 +83,7 @@ const CookieConsent = ({ onAccept, onDecline }: CookieConsentProps) => {
           <IconButton
             onClick={handleClose}
             size="small"
+            aria-label="Dismiss cookie banner"
             sx={{
               position: 'absolute',
               top: 10,

@@ -87,6 +87,7 @@ jspm_packages/
 # AI stuff
 .claude
 CLAUDE.MD
+.playwright-mcp
 
 # Next.js build output
 .next

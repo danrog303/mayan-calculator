@@ -281,7 +281,7 @@ export default function Home() {
             display: 'flex', alignItems: 'center', justifyContent: 'center',
             border: '1px dashed rgba(123,63,30,0.12)',
           }}>
-            <Typography sx={{ color: 'rgba(123,63,30,0.4)', fontFamily: '"Playfair Display", serif', letterSpacing: '0.2em', fontSize: '0.875rem', fontWeight: 600 }}>
+            <Typography sx={{ color: 'rgba(123,63,30,0.6)', fontFamily: '"Playfair Display", serif', letterSpacing: '0.2em', fontSize: '0.875rem', fontWeight: 600 }}>
               ADVERTISEMENT
             </Typography>
           </Box>
@@ -297,7 +297,7 @@ export default function Home() {
               <Typography variant="h3" component="h2" sx={{ color: 'text.primary', fontSize: { xs: '1.25rem', md: '1.85rem' }, mb: 1 }}>
                 The Complete Vigesimal Codex
               </Typography>
-              <Typography variant="body2" sx={{ color: 'text.secondary', opacity: 0.7 }}>
+              <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 All twenty glyphs of the Maya base-20 system
               </Typography>
             </Box>
@@ -412,7 +412,7 @@ export default function Home() {
                 <Typography sx={{ fontFamily: '"Playfair Display", serif', fontSize: '0.875rem', letterSpacing: '0.15em', fontWeight: 600, color: 'text.secondary', opacity: 0.8 }}>
                   NINETEEN
                 </Typography>
-                <Typography sx={{ fontFamily: '"Playfair Display", serif', fontSize: '0.75rem', letterSpacing: '0.1em', color: 'primary.main', opacity: 0.7, mt: 0.5 }}>
+                <Typography sx={{ fontFamily: '"Playfair Display", serif', fontSize: '0.75rem', letterSpacing: '0.1em', color: 'primary.main', mt: 0.5 }}>
                   Highest single digit
                 </Typography>
               </Box>
@@ -518,7 +518,7 @@ export default function Home() {
               maxWidth: 580,
               mx: 'auto',
               px: 2,
-              opacity: 0.4,
+              opacity: 0.8,
               fontSize: '0.75rem',
               lineHeight: 1.9,
               mb: 2,
@@ -530,12 +530,11 @@ export default function Home() {
               display: 'inline-block',
               fontSize: '0.875rem',
               color: 'text.secondary',
-              opacity: 0.6,
               textDecoration: 'none',
               fontFamily: '"Playfair Display", serif',
               letterSpacing: '0.05em',
-              transition: 'opacity 0.2s, color 0.2s',
-              '&:hover': { opacity: 1, color: 'primary.main' },
+              transition: 'color 0.2s',
+              '&:hover': { color: 'primary.main' },
             }}>
               Privacy Policy
             </Box>
