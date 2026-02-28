@@ -10,6 +10,7 @@ export const ldJson = JSON.stringify({
   inLanguage: "en",
   isAccessibleForFree: true,
   datePublished: "2024-01-01",
+  dateModified: "2026-02-01",
   offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   potentialAction: {
     "@type": "UseAction",

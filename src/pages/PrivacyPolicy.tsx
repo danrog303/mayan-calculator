@@ -6,7 +6,7 @@ export const meta: MetaFunction = () => {
   return [
     { title: "Privacy Policy | Maya Numeral Converter" },
     { name: "description", content: "Privacy policy and GDPR compliance information for the Maya Numeral Converter tool." },
-    { name: "keywords", content: "privacy policy, GDPR, tracking, data processing, Maya numeral converter" },
+    { tagName: "link", rel: "canonical", href: "https://mayacalc.danielrogowski.net/privacy-policy" },
     { property: "og:title", content: "Privacy Policy | Maya Numeral Converter" },
     { property: "og:description", content: "Privacy policy and GDPR compliance information for the Maya Numeral Converter tool." },
     { name: "twitter:title", content: "Privacy Policy | Maya Numeral Converter" },

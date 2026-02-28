@@ -18,6 +18,7 @@ export const meta: MetaFunction = () => {
     { title: "Maya Numeral Converter — Convert Decimal to Maya Numbers" },
     { name: "description", content: "Convert decimal numbers to Maya numerals instantly. Free online calculator using authentic Maya Unicode characters. Learn the ancient base-20 vigesimal number system." },
     { name: "keywords", content: "Maya numeral converter, decimal to Maya, Maya number system, Maya numerals calculator, vigesimal converter, ancient Maya numbers, Maya mathematics, base-20" },
+    { tagName: "link", rel: "canonical", href: "https://mayacalc.danielrogowski.net/" },
     { property: "og:title", content: "Maya Numeral Converter — Convert Decimal to Maya Numbers" },
     { property: "og:description", content: "Convert decimal numbers to Maya numerals instantly. Free online calculator using authentic Maya Unicode characters. Learn the ancient base-20 number system." },
     { name: "twitter:title", content: "Maya Numeral Converter" },

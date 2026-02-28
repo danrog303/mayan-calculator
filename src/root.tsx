@@ -20,14 +20,18 @@ const CookieConsent = lazy(() => import("./components/CookieConsent"));
 export const meta: MetaFunction = () => {
   return [
     { name: "author", content: "Daniel Rogowski" },
+    { name: "application-name", content: "Maya Numeral Converter" },
     { name: "robots", content: "index, follow" },
     { property: "og:type", content: "website" },
     { property: "og:url", content: "https://mayacalc.danielrogowski.net/" },
     { property: "og:site_name", content: "Maya Numeral Converter" },
     { property: "og:locale", content: "en_US" },
     { property: "og:image", content: "https://mayacalc.danielrogowski.net/favicon.png" },
+    { property: "og:image:type", content: "image/png" },
+    { property: "og:image:alt", content: "Maya Numeral Converter — Convert decimal to ancient Maya numerals" },
     { name: "twitter:card", content: "summary" },
-    { name: "twitter:image", content: "https://mayacalc.danielrogowski.net/favicon.png" }
+    { name: "twitter:image", content: "https://mayacalc.danielrogowski.net/favicon.png" },
+    { name: "twitter:image:alt", content: "Maya Numeral Converter" }
   ];
 };
 
