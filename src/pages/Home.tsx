@@ -374,12 +374,22 @@ export default function Home() {
                   Digits are stacked vertically, with the highest-order position at the top.
                 </Typography>
 
-                <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.95, fontSize: '0.97rem' }}>
+                <Typography variant="body1" sx={{ color: 'text.secondary', mb: 2.5, lineHeight: 1.95, fontSize: '0.97rem' }}>
                   Each glyph corresponds to a Unicode character in the range{' '}
                   <Box component="span" sx={{ fontFamily: 'monospace', color: 'primary.main', fontSize: '0.88em', bgcolor: 'rgba(123,63,30,0.07)', px: 0.8, py: 0.2 }}>U+1D2E0</Box>
                   {' '}–{' '}
                   <Box component="span" sx={{ fontFamily: 'monospace', color: 'primary.main', fontSize: '0.88em', bgcolor: 'rgba(123,63,30,0.07)', px: 0.8, py: 0.2 }}>U+1D2F3</Box>,
                   {' '}representing values 0 through 19 — the twenty fundamental symbols of the ancient codex.
+                </Typography>
+
+                <Typography variant="body1" sx={{ color: 'text.secondary', mb: 2.5, lineHeight: 1.95, fontSize: '0.97rem' }}>
+                  One of the most remarkable achievements of Maya mathematics was the{' '}
+                  <Box component="em" sx={{ color: 'primary.main', fontStyle: 'normal', fontWeight: 500 }}>independent invention of zero</Box>
+                  {' '}— centuries before it reached Europe. The zero glyph (𝋠) served as both a placeholder and a true numerical concept, enabling the Maya to represent arbitrarily large numbers with just three symbols: a dot (1), a bar (5), and the shell-shaped zero.
+                </Typography>
+
+                <Typography variant="body1" sx={{ color: 'text.secondary', lineHeight: 1.95, fontSize: '0.97rem' }}>
+                  Compared to other ancient systems, the Maya approach was remarkably efficient. Roman numerals have no zero and no positional value — writing 400 as CDXCIX requires nine symbols. In the Maya system, 400 is simply written as two vertically stacked glyphs: 1 (= 1 × 20²) above 0 (= 0 × 20¹) above 0 (= 0 × 20⁰), reading top to bottom.
                 </Typography>
               </Box>
 
@@ -417,6 +427,196 @@ export default function Home() {
                   Highest single digit
                 </Typography>
               </Box>
+            </Box>
+          </Box>
+        </>
+
+        <StepDivider />
+
+        {/* ── HOW IT WORKS SECTION ──────────────────────────────────────── */}
+        <>
+          <Box sx={{ mb: 2 }}>
+            <Box sx={{ textAlign: 'center', mb: 5 }}>
+              <Eyebrow>Worked Example</Eyebrow>
+              <Typography variant="h3" component="h2" sx={{ color: 'text.primary', fontSize: { xs: '1.25rem', md: '1.85rem' }, mb: 1 }}>
+                How to Read Maya Numerals
+              </Typography>
+              <Typography variant="body2" sx={{ color: 'text.secondary', maxWidth: 480, mx: 'auto' }}>
+                Maya digits are stacked vertically. Each position is a power of 20, read from top (highest) to bottom (units).
+              </Typography>
+            </Box>
+
+            <Box sx={{
+              display: 'grid',
+              gridTemplateColumns: { xs: '1fr', sm: 'repeat(3, 1fr)' },
+              gap: 0,
+              border: '1px solid rgba(123,63,30,0.12)',
+              bgcolor: 'background.paper',
+              boxShadow: '0 2px 20px rgba(123,63,30,0.06)',
+            }}>
+              {[
+                {
+                  decimal: 7,
+                  label: 'Seven dots',
+                  note: '7 × 20⁰ = 7',
+                  desc: 'Numbers 1–4 are shown as dots. Numbers 5–19 use bars (worth 5 each) plus dots.',
+                },
+                {
+                  decimal: 20,
+                  label: 'One position up',
+                  note: '1 × 20¹ + 0 = 20',
+                  desc: 'Twenty cannot fit in the units position, so a 1 moves to the next level and a zero shell fills the bottom.',
+                },
+                {
+                  decimal: 365,
+                  label: 'The Maya calendar year',
+                  note: '18 × 20¹ + 5 = 365',
+                  desc: 'The Maya solar calendar (haab) had 365 days — a number they expressed effortlessly in their own script.',
+                },
+              ].map(({ decimal, label, note, desc }, i, arr) => (
+                <Box key={decimal} sx={{
+                  p: { xs: 3, md: 4 },
+                  borderRight: !isMobile && i < arr.length - 1 ? '1px solid rgba(123,63,30,0.12)' : 'none',
+                  borderBottom: isMobile && i < arr.length - 1 ? '1px solid rgba(123,63,30,0.12)' : 'none',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  textAlign: 'center',
+                  gap: 2,
+                }}>
+                  <Box sx={{ mb: 1 }}>
+                    <MayaNumber digits={convertToBase20(decimal)} compact />
+                  </Box>
+                  <Box>
+                    <Typography sx={{
+                      fontFamily: '"Playfair Display", serif',
+                      fontSize: '1.5rem',
+                      fontWeight: 700,
+                      color: 'primary.main',
+                      lineHeight: 1,
+                      mb: 0.5,
+                    }}>
+                      {decimal}
+                    </Typography>
+                    <Typography sx={{
+                      fontFamily: '"Playfair Display", serif',
+                      fontSize: '0.8rem',
+                      letterSpacing: '0.08em',
+                      fontWeight: 600,
+                      color: 'text.secondary',
+                      textTransform: 'uppercase',
+                      mb: 1,
+                    }}>
+                      {label}
+                    </Typography>
+                    <Typography sx={{
+                      fontFamily: 'monospace',
+                      fontSize: '0.82rem',
+                      color: 'primary.main',
+                      bgcolor: 'rgba(123,63,30,0.06)',
+                      px: 1.2,
+                      py: 0.4,
+                      display: 'inline-block',
+                      mb: 1.5,
+                    }}>
+                      {note}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary', lineHeight: 1.75, fontSize: '0.88rem' }}>
+                      {desc}
+                    </Typography>
+                  </Box>
+                </Box>
+              ))}
+            </Box>
+          </Box>
+        </>
+
+        <StepDivider />
+
+        {/* ── FAQ SECTION ───────────────────────────────────────────────── */}
+        <>
+          <Box sx={{ mb: 2 }}>
+            <Box sx={{ textAlign: 'center', mb: 5 }}>
+              <Eyebrow>Questions</Eyebrow>
+              <Typography variant="h3" component="h2" sx={{ color: 'text.primary', fontSize: { xs: '1.25rem', md: '1.85rem' }, mb: 1 }}>
+                Frequently Asked Questions
+              </Typography>
+            </Box>
+
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 0, border: '1px solid rgba(123,63,30,0.12)', bgcolor: 'background.paper', boxShadow: '0 2px 20px rgba(123,63,30,0.06)' }}>
+              {[
+                {
+                  q: 'What base is the Maya number system?',
+                  a: 'The Maya number system uses base 20, also called vigesimal. Each positional level represents a power of 20: the bottom position is 20⁰ (units), the next is 20¹ (twenties), then 20² (four hundreds), and so on.',
+                },
+                {
+                  q: 'How many symbols does the Maya number system use?',
+                  a: 'Just three: a dot representing 1, a horizontal bar representing 5, and a shell-shaped glyph representing 0. Combinations of these three symbols express any digit from 0 to 19. To write larger numbers, digits are stacked vertically.',
+                },
+                {
+                  q: 'Did the Maya invent zero?',
+                  a: 'Yes — the Maya independently developed a concept of zero, one of the earliest civilizations to do so. Their zero was not merely a placeholder but a true number used in calculations. This innovation enabled the positional nature of their system and appeared in Maya inscriptions as early as the 4th century BCE.',
+                },
+                {
+                  q: 'What is the largest number this converter supports?',
+                  a: 'The converter handles any non-negative integer your browser\'s JavaScript engine can represent exactly as an integer (up to 2⁵³ − 1, or about 9 quadrillion). In practice, numbers in the billions already produce many positional levels and are uncommon in historical Maya texts.',
+                },
+                {
+                  q: 'How do I read Maya numerals — top to bottom or bottom to top?',
+                  a: 'Top to bottom, from the most significant position to the least significant. The highest power of 20 sits at the top of the stack, and the units (ones) position is at the bottom. This converter labels each level with its positional value so you can verify the reading direction.',
+                },
+                {
+                  q: 'Are the glyphs shown here historically accurate?',
+                  a: 'The glyphs are the standardized Unicode representations (U+1D2E0–U+1D2F3) from the Mayan Numerals block, added in Unicode 7.0 (2014). They faithfully reflect the abstract dot-bar-shell system used in Maya codices, though decorative variants exist in carved monuments.',
+                },
+              ].map(({ q, a }, i, arr) => (
+                <Box key={i} component="details" sx={{
+                  borderBottom: i < arr.length - 1 ? '1px solid rgba(123,63,30,0.12)' : 'none',
+                  '&[open] summary::after': { transform: 'rotate(180deg)' },
+                }}>
+                  <Box component="summary" sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    p: { xs: 3, md: 4 },
+                    cursor: 'pointer',
+                    listStyle: 'none',
+                    '&::-webkit-details-marker': { display: 'none' },
+                    '&::after': {
+                      content: '"›"',
+                      fontFamily: 'serif',
+                      fontSize: '1.4rem',
+                      color: 'rgba(123,63,30,0.5)',
+                      transform: 'rotate(90deg)',
+                      display: 'inline-block',
+                      transition: 'transform 0.2s ease',
+                      flexShrink: 0,
+                      ml: 2,
+                    },
+                  }}>
+                    <Typography component="h3" sx={{
+                      fontFamily: '"Playfair Display", serif',
+                      fontSize: { xs: '1rem', md: '1.1rem' },
+                      fontWeight: 600,
+                      color: 'text.primary',
+                      lineHeight: 1.5,
+                    }}>
+                      {q}
+                    </Typography>
+                  </Box>
+                  <Typography variant="body1" sx={{
+                    color: 'text.secondary',
+                    px: { xs: 3, md: 4 },
+                    pb: { xs: 3, md: 4 },
+                    lineHeight: 1.9,
+                    fontSize: '0.97rem',
+                    borderTop: '1px solid rgba(123,63,30,0.07)',
+                    pt: 2.5,
+                  }}>
+                    {a}
+                  </Typography>
+                </Box>
+              ))}
             </Box>
           </Box>
         </>

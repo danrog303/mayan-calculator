@@ -1,9 +1,9 @@
 import { Box, Typography } from '@mui/material';
 import MayaDigit from './MayaDigit';
 
-type Props = { digits: number[] };
+type Props = { digits: number[]; compact?: boolean };
 
-export default function MayaNumber({ digits }: Props) {
+export default function MayaNumber({ digits, compact = false }: Props) {
     return (
         <Box sx={{
             display: 'flex',
@@ -22,7 +22,7 @@ export default function MayaNumber({ digits }: Props) {
                 zIndex: 1,
             }}>
                 {/* Top position marker */}
-                {digits.length > 1 && (
+                {!compact && digits.length > 1 && (
                     <Typography sx={{
                         fontFamily: '"Playfair Display", serif',
                         fontSize: '0.75rem',
@@ -41,7 +41,7 @@ export default function MayaNumber({ digits }: Props) {
                 ))}
 
                 {/* Bottom position marker */}
-                {digits.length > 1 && (
+                {!compact && digits.length > 1 && (
                     <Typography sx={{
                         fontFamily: '"Playfair Display", serif',
                         fontSize: '0.75rem',
@@ -57,7 +57,7 @@ export default function MayaNumber({ digits }: Props) {
             </Box>
 
             {/* Digit count badge */}
-            {digits.length > 0 && (
+            {!compact && digits.length > 0 && (
                 <Box sx={{
                     mt: 3,
                     display: 'flex',
