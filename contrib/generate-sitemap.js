@@ -17,7 +17,7 @@ if (fs.existsSync(envPath)) {
     });
 }
 
-const BASE_URL = process.env.VITE_SITE_URL || "https://danielrogowski.net";
+const BASE_URL = process.env.VITE_SITE_URL || "https://mayacalc.danielrogowski.net";
 const BUILD_DIR = path.join(__dirname, "..", "build", "client");
 const OUTPUT_PATH = path.join(BUILD_DIR, "sitemap.xml");
 
