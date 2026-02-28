@@ -15,3 +15,16 @@ if (fs.existsSync(src)) {
 } else {
   console.warn("Warning: build/client/404/index.html not found — skipping 404.html generation");
 }
+
+const filesToRemove = [
+  "__spa-fallback.html",
+  "_redirects"
+];
+
+filesToRemove.forEach(file => {
+  const p = path.join(__dirname, "..", "build", "client", file);
+  if (fs.existsSync(p)) {
+    fs.rmSync(p);
+    console.log(`${file} removed from build/client/`);
+  }
+});
