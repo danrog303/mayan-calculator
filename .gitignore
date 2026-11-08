@@ -88,6 +88,9 @@ jspm_packages/
 .claude
 CLAUDE.MD
 .playwright-mcp
+.impeccable/
+PRODUCT.md
+DESIGN.md
 
 # Next.js build output
 .next

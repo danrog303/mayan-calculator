@@ -30,7 +30,3 @@
 | `sidebar` | Sticky right column, from 1200px | 300×600 |
 
 To serve ads, render the AdSense `<ins class="adsbygoogle">` element inside `.ad-slot__frame`, allow the AdSense hosts in the CSP in `public/_headers`, and update the privacy policy and cookie consent for advertising cookies.
-
-## 🎨 Design context
-- `PRODUCT.md`: product facts for design work.
-- `.impeccable/`: Impeccable design tooling context (surface briefs, design system sidecar).
