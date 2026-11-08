@@ -14,7 +14,6 @@ import {
   placeValue,
 } from '../lib/maya';
 
-const CONTENT_UPDATED = 'November 2026';
 const PAGE_TITLE = 'Maya Numeral Converter: Decimal to Maya and Maya to Decimal';
 const PAGE_DESCRIPTION =
   'Free Maya numeral converter: decimal to Maya numerals and back, with a base-20 place-value breakdown, a 0 to 19 chart and worked examples.';
@@ -84,7 +83,7 @@ export default function Home() {
             Convert decimal numbers to Maya numerals and back, with the base-20 place value of every level.
           </p>
           <p className="byline">
-            By <a href="https://danielrogowski.net/">Daniel Rogowski</a>. Updated {CONTENT_UPDATED}.
+            By <a href="https://danielrogowski.net/">Daniel Rogowski</a>
           </p>
         </div>
 
