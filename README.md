@@ -1,21 +1,36 @@
 # mayan-calculator
-> 🧮 Free online tool for converting decimal numbers to the ancient Maya number system.
+> 🧮 Free online tool for converting between decimal numbers and the ancient Maya number system.
 
 ## 🌟 Features
-- Converting from decimal to maya numeral system.
-- Responsive design thanks to MUI library
+- Decimal to Maya and Maya to decimal conversion, live as you type.
+- Base-20 place-value breakdown for every result.
+- Glyph keypad for building a Maya numeral level by level.
+- Copy results as Unicode Maya numeral characters (U+1D2E0 to U+1D2F3).
+- Shareable results via `?n=365` or `?maya=18.5`.
+- Maya numerals chart (0 to 19), worked examples, how-to guides and FAQ.
+- Reserved, layout-stable placements for Google AdSense.
 
 ## 🚀 Live Demo
 - Visit the live application: [Maya Numeral Converter](https://mayacalc.danielrogowski.net/).
 
 ## 🛠️ Technology Stack
 - **Frontend**: React 19 with TypeScript
-- **Routing / SSG**: React Router v7 (framework mode)
+- **Routing / SSG**: React Router v7 (framework mode, static prerender)
 - **Build Tool**: Vite
-- **UI Framework**: Material-UI (MUI) v7
-- **Styling**: Emotion (CSS-in-JS)
-- **Icons**: Material Icons
+- **Styling**: Plain CSS with custom properties (`src/styles/global.css`)
+- **Numerals and icons**: Inline SVG components, no icon or glyph fonts
 
-## 🖼️ Screenshots
-<img width="600" alt="Screenshot 2026-02-28 154947" src="https://github.com/user-attachments/assets/3d1639c9-6129-4fff-93e6-bb84e0b8780f" />
-<img width="600" alt="Screenshot 2026-02-28 155018" src="https://github.com/user-attachments/assets/ee67a6bd-5775-4659-b33a-3c37cb77077a" />
+## 📢 Ad placements
+`src/components/AdSlot.tsx` reserves space for three AdSense units:
+
+| Placement | Where | Size |
+|---|---|---|
+| `below-converter` | Under the converter | 728×90 from 768px, 336×280 / 300×250 below |
+| `in-article` | Between the examples table and the how-to | 728×90 from 768px, 336×280 / 300×250 below |
+| `sidebar` | Sticky right column, from 1200px | 300×600 |
+
+To serve ads, render the AdSense `<ins class="adsbygoogle">` element inside `.ad-slot__frame`, allow the AdSense hosts in the CSP in `public/_headers`, and update the privacy policy and cookie consent for advertising cookies.
+
+## 🎨 Design context
+- `PRODUCT.md`: product facts for design work.
+- `.impeccable/`: Impeccable design tooling context (surface briefs, design system sidecar).

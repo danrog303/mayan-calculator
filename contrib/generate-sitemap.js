@@ -20,6 +20,7 @@ if (fs.existsSync(envPath)) {
 const BASE_URL = process.env.VITE_SITE_URL || "https://mayacalc.danielrogowski.net";
 const BUILD_DIR = path.join(__dirname, "..", "build", "client");
 const OUTPUT_PATH = path.join(BUILD_DIR, "sitemap.xml");
+const LAST_MODIFIED = new Date().toISOString().slice(0, 10);
 
 function getPrerenderedPaths(dir, base = "") {
   const entries = fs.readdirSync(dir, { withFileTypes: true });
@@ -40,7 +41,7 @@ function getPrerenderedPaths(dir, base = "") {
 
 function buildSitemap(urls) {
   const urlEntries = urls
-    .map(({ loc, priority }) => `  <url>\n    <loc>${loc}</loc>\n    <priority>${priority}</priority>\n  </url>`)
+    .map(({ loc, priority }) => `  <url>\n    <loc>${loc}</loc>\n    <lastmod>${LAST_MODIFIED}</lastmod>\n    <priority>${priority}</priority>\n  </url>`)
     .join("\n");
 
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urlEntries}\n</urlset>\n`;
