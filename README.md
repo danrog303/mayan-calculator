@@ -14,8 +14,8 @@
 - Visit the live application: [Maya Numeral Converter](https://mayacalc.danielrogowski.net/).
 
 ## 🛠️ Technology Stack
-- **Frontend**: React 19 with TypeScript
-- **Routing / SSG**: React Router v7 (framework mode, static prerender)
+- **Frontend**: React 19 with TypeScript 7 (requires Node.js 22.22 or newer)
+- **Routing / SSG**: React Router v8 (framework mode, static prerender)
 - **Build Tool**: Vite
 - **Styling**: Plain CSS with custom properties (`src/styles/global.css`)
 - **Numerals and icons**: Inline SVG components, no icon or glyph fonts

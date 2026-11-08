@@ -31,7 +31,7 @@ A fast, single-purpose converter that shows the Maya numeral (dot, bar and shell
 - Decimal to Maya: any non-negative integer up to Number.MAX_SAFE_INTEGER (2^53 - 1).
 - Maya to decimal: user builds a numeral level by level from the twenty digit glyphs.
 - Live conversion while typing, place-value breakdown, copy result.
-- Stack: React 19 + React Router 7 framework mode, static prerender (`/`, `/privacy-policy`, `/404`), Vite, deployed to Cloudflare Pages. Styling is plain CSS (MUI was removed in the 2026 redesign for performance).
+- Stack: React 19 + React Router 8 framework mode, TypeScript 7, Node.js 22.22+, static prerender (`/`, `/privacy-policy`, `/404`), Vite, deployed to Cloudflare Pages. Styling is plain CSS (MUI was removed in the 2026 redesign for performance).
 - Maya digits are drawn as inline SVG (dots, bars, shell) by `src/components/MayaGlyph.tsx`; no glyph web font is loaded. Copied results use the Unicode Mayan Numerals characters (U+1D2E0 to U+1D2F3).
 - Content language: English.
 - AdSense: only reserved slots for now; publisher and slot IDs are not decided yet.
