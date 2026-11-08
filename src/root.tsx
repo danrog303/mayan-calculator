@@ -12,8 +12,9 @@ const CookieConsent = lazy(() => import('./components/CookieConsent'));
 const THEME_COLOR = '#0b4a3e';
 
 export const links: LinksFunction = () => [
-  { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-  { rel: 'apple-touch-icon', href: '/favicon.png' },
+  { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+  { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon-32.png' },
+  { rel: 'apple-touch-icon', sizes: '180x180', href: '/apple-touch-icon.png' },
 ];
 
 export function Layout({ children }: { children: ReactNode }) {

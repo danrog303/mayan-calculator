@@ -5,7 +5,7 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
   {
     question: 'What base is the Maya number system?',
     answer:
-      'The Maya number system uses base 20, also called vigesimal. Each level of a numeral is a power of 20: the bottom level counts units (20⁰), the next counts twenties (20¹), then four hundreds (20²), eight thousands (20³), and so on.',
+      'The Maya number system uses base 20, also called vigesimal. Each level of a numeral is worth 20 times the level below it: the bottom level counts units (1), the next counts twenties (20), then four hundreds (400), eight thousands (8,000), and so on.',
   },
   {
     question: 'How many symbols does the Maya number system use?',
@@ -35,7 +35,7 @@ export const FAQ_ITEMS: readonly FaqItem[] = [
   {
     question: 'What is the largest number this converter supports?',
     answer:
-      'Any whole number from 0 up to 9,007,199,254,740,991 (2⁵³ − 1), the largest integer a browser can represent exactly. That is a 13-level Maya numeral. Numbers in the millions already need five or more levels and are rare in historical Maya texts.',
+      'Any whole number from 0 up to 9,007,199,254,740,991 (2 to the power of 53, minus 1), the largest integer a browser can represent exactly. That is a 13-level Maya numeral. Numbers in the millions already need five or more levels and are rare in historical Maya texts.',
   },
   {
     question: 'Are the glyphs shown here historically accurate?',

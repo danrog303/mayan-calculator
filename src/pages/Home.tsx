@@ -14,6 +14,7 @@ import {
   placeValue,
 } from '../lib/maya';
 
+const CONTENT_UPDATED = 'November 2026';
 const PAGE_TITLE = 'Maya Numeral Converter: Decimal to Maya and Maya to Decimal';
 const PAGE_DESCRIPTION =
   'Free Maya numeral converter: decimal to Maya numerals and back, with a base-20 place-value breakdown, a 0 to 19 chart and worked examples.';
@@ -67,12 +68,7 @@ type Source = { label: string; text: string; href: string };
 const SOURCES: readonly Source[] = [
   { label: 'Article reference', text: 'Wikipedia: Maya numerals', href: 'https://en.wikipedia.org/wiki/Maya_numerals' },
   {
-    label: 'Icon source',
-    text: 'maxpixel.net (CC0 Public Domain)',
-    href: 'https://www.maxpixel.net/Aztec-Symbol-Skull-Symbol-Maya-Toltec-Aztec-37936',
-  },
-  {
-    label: 'Numeral graphics',
+    label: 'Numeral reference',
     text: 'Wikipedia: Bryan Derksen (CC BY-SA 3.0)',
     href: 'https://pl.wikipedia.org/wiki/Cyfry_Maj%C3%B3w#/media/Plik:Maya.svg',
   },
@@ -85,8 +81,10 @@ export default function Home() {
         <div className="page-intro">
           <h1>Maya Numeral Converter</h1>
           <p className="lede">
-            Convert decimal numbers to Maya numerals and Maya numerals back to decimal. Results update as you type
-            and show the base-20 place value of every level.
+            Convert decimal numbers to Maya numerals and back, with the base-20 place value of every level.
+          </p>
+          <p className="byline">
+            By <a href="https://danielrogowski.net/">Daniel Rogowski</a>. Updated {CONTENT_UPDATED}.
           </p>
         </div>
 
@@ -121,7 +119,7 @@ export default function Home() {
             so the levels count ones, twenties, four hundreds and eight thousands.
           </p>
           <div className="table-scroll">
-            <table className="data-table">
+            <table className="data-table data-table--examples">
               <caption className="visually-hidden">Decimal numbers and their Maya numerals</caption>
               <thead>
                 <tr>
@@ -141,7 +139,7 @@ export default function Home() {
                         <MayaNumeral digits={digits} size="sm" />
                       </td>
                       <td className="nowrap">{digits.join(', ')}</td>
-                      <td>
+                      <td className="data-table__calc">
                         <span className="calc">{calculationText(digits)}</span>
                         {note && <span className="data-table__note">{note}</span>}
                       </td>
@@ -178,10 +176,12 @@ export default function Home() {
               <tbody>
                 {HOW_TO_STEPS.map(({ dividend, quotient, remainder }, index) => (
                   <tr key={dividend}>
-                    <td className="calc">{formatNumber(dividend)} ÷ 20</td>
+                    <td className="calc nowrap">{formatNumber(dividend)} ÷ 20</td>
                     <td className="num">{formatNumber(quotient)}</td>
                     <td className="num">{remainder}</td>
-                    <td>20<sup>{index}</sup> ({formatNumber(placeValue(index))}s)</td>
+                    <td className="nowrap">
+                      20<sup>{index}</sup> ({formatNumber(placeValue(index))}s)
+                    </td>
                   </tr>
                 ))}
               </tbody>

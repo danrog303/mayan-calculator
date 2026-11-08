@@ -9,14 +9,15 @@ const NAV_ITEMS: readonly NavItem[] = [
   { hash: '#faq', label: 'FAQ' },
 ];
 
-/** Logo mark: the Maya numeral 7 (two dots over a bar) in a rounded tile. */
+/** Logo mark: the Maya numeral 8 (three dots over a bar) in a rounded tile. Same drawing as public/favicon.svg. */
 function LogoMark() {
   return (
     <svg className="logo-mark" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
       <rect width="32" height="32" rx="7" fill="currentColor" />
-      <circle cx="12" cy="12" r="2.75" className="logo-mark__ink" />
-      <circle cx="20" cy="12" r="2.75" className="logo-mark__ink" />
-      <rect x="7" y="18" width="18" height="5" rx="1.5" className="logo-mark__ink" />
+      <circle cx="10" cy="12.5" r="2.5" className="logo-mark__ink" />
+      <circle cx="16" cy="12.5" r="2.5" className="logo-mark__ink" />
+      <circle cx="22" cy="12.5" r="2.5" className="logo-mark__ink" />
+      <rect x="6.5" y="18" width="19" height="4.5" rx="1.5" className="logo-mark__ink" />
     </svg>
   );
 }

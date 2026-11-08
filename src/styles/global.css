@@ -230,7 +230,7 @@ code {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 56px;
+  min-height: 52px;
   color: var(--c-on-dark);
   text-decoration: none;
   font-weight: 700;
@@ -264,18 +264,19 @@ code {
 
 .site-nav ul {
   display: flex;
-  gap: 4px;
+  justify-content: space-between;
+  gap: 2px;
   margin: 0;
-  padding: 6px var(--gutter);
+  padding: 2px calc(var(--gutter) - 8px);
   list-style: none;
 }
 
 .site-nav a {
   display: block;
-  padding: 6px 10px;
+  padding: 8px;
   border-radius: var(--radius-sm);
   color: var(--c-on-dark-2);
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   font-weight: 500;
   white-space: nowrap;
   text-decoration: none;
@@ -299,7 +300,13 @@ code {
   }
 
   .site-nav ul {
+    gap: 4px;
     padding: 0;
+  }
+
+  .site-nav a {
+    padding: 6px 10px;
+    font-size: 0.9375rem;
   }
 }
 
@@ -310,7 +317,7 @@ code {
   width: 100%;
   max-width: var(--page-max);
   margin: 0 auto;
-  padding: 24px var(--gutter) 56px;
+  padding: 16px var(--gutter) 56px;
 }
 
 @media (min-width: 768px) {
@@ -343,7 +350,13 @@ code {
 }
 
 .page-intro {
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+  .page-intro {
+    margin-bottom: 20px;
+  }
 }
 
 .lede {
@@ -623,7 +636,7 @@ code {
 
 .converter__input,
 .converter__result {
-  padding: 20px var(--gutter);
+  padding: 16px var(--gutter);
   min-width: 0;
 }
 
@@ -660,10 +673,29 @@ code {
 
 .examples {
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-  margin-top: 20px;
+  margin: 16px calc(var(--gutter) * -1) 0;
+  padding: 2px var(--gutter);
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.examples::-webkit-scrollbar {
+  display: none;
+}
+
+.examples > * {
+  flex-shrink: 0;
+}
+
+@media (min-width: 900px) {
+  .examples {
+    flex-wrap: wrap;
+    margin: 20px 0 0;
+    padding: 0;
+    overflow: visible;
+  }
 }
 
 .examples__label {
@@ -678,13 +710,25 @@ code {
   align-items: center;
   justify-content: space-between;
   gap: 8px 16px;
-  margin-bottom: 16px;
+  margin-bottom: 12px;
+}
+
+@media (min-width: 900px) {
+  .result-head {
+    margin-bottom: 16px;
+  }
 }
 
 .result-head__title {
   font-size: 0.9375rem;
   font-weight: 600;
   color: var(--c-ink-2);
+}
+
+.result-head__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .result-head__value {
@@ -697,11 +741,27 @@ code {
   gap: 16px;
 }
 
+/* Numeral beside the table at every width, so on a phone the answer
+   (the table's total) is visible without scrolling. Tall results stack. */
+.result-split:not(.result-split--stacked) {
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 12px;
+}
+
 @media (min-width: 560px) {
   .result-split:not(.result-split--stacked) {
-    grid-template-columns: auto minmax(0, 1fr);
-    align-items: start;
     gap: 20px;
+  }
+}
+
+@media (max-width: 559px) {
+  .result-split .numeral--xl {
+    font-size: 3rem;
+  }
+
+  .result-split > .numeral {
+    padding: 12px;
   }
 }
 
@@ -848,8 +908,11 @@ code {
   background: var(--c-jade-50);
 }
 
-.ledger__glyph-col {
-  text-align: center;
+.ledger__digit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
 }
 
 .ledger__glyph {
@@ -857,8 +920,10 @@ code {
   line-height: 1;
 }
 
-.ledger__glyph .maya-glyph {
-  margin: 0 auto;
+@media (max-width: 559px) {
+  .ledger__glyph {
+    display: none;
+  }
 }
 
 .ledger tbody tr.is-active .ledger__glyph {
@@ -873,6 +938,7 @@ code {
 
 .ledger__place {
   display: block;
+  white-space: normal;
   font-size: 0.8125rem;
   color: var(--c-ink-3);
 }
@@ -895,10 +961,22 @@ code {
   color: var(--c-ink);
 }
 
-@media (max-width: 420px) {
+@media (max-width: 480px) {
+  .ledger {
+    font-size: 0.875rem;
+  }
+
   .ledger th,
   .ledger td {
     padding: 8px 6px;
+  }
+
+  .ledger__place {
+    font-size: 0.75rem;
+  }
+
+  .ledger__total {
+    font-size: 1rem;
   }
 }
 
@@ -1190,6 +1268,62 @@ code {
   font-variant-numeric: tabular-nums;
 }
 
+/* Examples table on phones: decimal, numeral and digits on one line,
+   the calculation and note as a full-width second line. */
+@media (max-width: 599px) {
+  .data-table--examples thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+  }
+
+  .data-table--examples tbody tr {
+    display: grid;
+    grid-template-columns: 4.5rem auto 1fr;
+    align-items: center;
+    column-gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--c-line-soft);
+  }
+
+  .data-table--examples tbody tr:last-child {
+    border-bottom: 0;
+  }
+
+  .data-table--examples tbody th,
+  .data-table--examples tbody td {
+    padding: 0;
+    border: 0;
+  }
+
+  .data-table--examples tbody th.num {
+    text-align: left;
+  }
+
+  .data-table--examples tbody td.nowrap {
+    color: var(--c-ink-3);
+    font-size: 0.875rem;
+  }
+
+  .data-table--examples .data-table__calc {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    font-size: 0.875rem;
+  }
+}
+
+.byline {
+  margin-top: 6px;
+  font-size: 0.875rem;
+  color: var(--c-ink-3);
+}
+
+.byline a {
+  color: inherit;
+}
+
 .data-table__note {
   display: block;
   margin-top: 2px;
@@ -1337,6 +1471,7 @@ code {
 
 .breadcrumb ol {
   display: flex;
+  align-items: baseline;
   flex-wrap: wrap;
   gap: 6px;
   margin: 0;

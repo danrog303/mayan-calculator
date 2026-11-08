@@ -5,6 +5,7 @@ import PlaceValueTable from './PlaceValueTable';
 import CopyButton from './CopyButton';
 import GlyphPad from './GlyphPad';
 import Icon from './Icon';
+import { SITE_URL } from '../lib/seo';
 import {
   convertToBase20,
   convertFromBase20,
@@ -201,7 +202,7 @@ export default function Converter() {
               </p>
             ) : (
               <p className="field-hint" id={inputHintId}>
-                Whole numbers from 0 to {formatNumber(MAX_DECIMAL)}. The result updates as you type.
+                Whole numbers up to {formatNumber(MAX_DECIMAL)}.
               </p>
             )}
 
@@ -227,7 +228,10 @@ export default function Converter() {
                   <p className="result-head__title">
                     <span className="result-head__value">{formatNumber(parsed.value)}</span> in Maya numerals
                   </p>
-                  <CopyButton text={mayaText(decimalDigits)} label="Copy numeral" />
+                  <div className="result-head__actions">
+                    <CopyButton text={mayaText(decimalDigits)} label="Copy numeral" />
+                    <CopyButton text={`${SITE_URL}/?${URL_PARAM_DECIMAL}=${parsed.value}`} label="Copy link" />
+                  </div>
                 </div>
                 <div className={resultSplitClass}>
                   <MayaNumeral digits={decimalDigits} activeLevel={activeLevel} onLevelHover={setActiveLevel} />
@@ -272,7 +276,10 @@ export default function Converter() {
               <>
                 <div className="result-head">
                   <p className="result-head__title">Decimal value</p>
-                  <CopyButton text={String(convertFromBase20(padDigits))} label="Copy number" />
+                  <div className="result-head__actions">
+                    <CopyButton text={String(convertFromBase20(padDigits))} label="Copy number" />
+                    <CopyButton text={`${SITE_URL}/?${URL_PARAM_MAYA}=${padDigits.join('.')}`} label="Copy link" />
+                  </div>
                 </div>
                 <p className="decimal-result" aria-live="polite">
                   {formatNumber(convertFromBase20(padDigits))}

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import MayaGlyph from './MayaGlyph';
 import { placeValue, formatNumber, convertFromBase20 } from '../lib/maya';
 
@@ -7,9 +8,33 @@ type Props = {
   onLevelHover?: (level: number | null) => void;
 };
 
+/** Formats a number with a line-break opportunity after each digit group comma. */
+function BreakableNumber({ value }: { value: number }) {
+  const groups = formatNumber(value).split(',');
+  return (
+    <>
+      {groups.map((group, index) => {
+        const isLast = index === groups.length - 1;
+        return (
+          <Fragment key={index}>
+            {group}
+            {!isLast && (
+              <>
+                ,<wbr />
+              </>
+            )}
+          </Fragment>
+        );
+      })}
+    </>
+  );
+}
+
 /**
  * The working behind a conversion: one row per level, top level first,
- * showing digit × place value = subtotal, and the decimal total.
+ * showing place value × digit = subtotal, and the decimal total.
+ * The digit cell carries the level's glyph; narrow screens hide the glyph
+ * (the numeral beside the table already shows it) so the values always fit.
  */
 export default function PlaceValueTable({ digits, activeLevel = null, onLevelHover }: Props) {
   const total = convertFromBase20(digits);
@@ -22,7 +47,6 @@ export default function PlaceValueTable({ digits, activeLevel = null, onLevelHov
         <thead>
           <tr>
             <th scope="col">Place value</th>
-            <th scope="col" className="ledger__glyph-col">Glyph</th>
             <th scope="col" className="num">Digit</th>
             <th scope="col" className="num">Value</th>
           </tr>
@@ -42,12 +66,18 @@ export default function PlaceValueTable({ digits, activeLevel = null, onLevelHov
               >
                 <td className="ledger__power">
                   20<sup>{power}</sup>
-                  <span className="ledger__place">{formatNumber(place)}</span>
+                  <span className="ledger__place">
+                    <BreakableNumber value={place} />
+                  </span>
                 </td>
-                <td className="ledger__glyph" aria-hidden="true">
-                  <MayaGlyph digit={digit} />
+                <td className="num">
+                  <span className="ledger__digit">
+                    <span className="ledger__glyph" aria-hidden="true">
+                      <MayaGlyph digit={digit} />
+                    </span>
+                    × {digit}
+                  </span>
                 </td>
-                <td className="num">× {digit}</td>
                 <td className="num">{formatNumber(subtotal)}</td>
               </tr>
             );
@@ -55,7 +85,9 @@ export default function PlaceValueTable({ digits, activeLevel = null, onLevelHov
         </tbody>
         <tfoot>
           <tr>
-            <th scope="row" colSpan={3}>Total (decimal)</th>
+            <th scope="row" colSpan={2}>
+              Total
+            </th>
             <td className="num ledger__total">{formatNumber(total)}</td>
           </tr>
         </tfoot>
