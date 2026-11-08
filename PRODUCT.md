@@ -44,7 +44,7 @@ A fast, single-purpose converter that shows the Maya numeral (dot, bar and shell
 ## Evidence on Hand
 
 - Existing educational copy: about section, worked examples (7, 20, 365), FAQ (mirrored in FAQPage JSON-LD), sources and credits (Wikipedia, maxpixel icon, Bryan Derksen numeral graphics).
-- Favicon: `public/favicon.png`.
+- Logo mark and favicon: `public/favicon.svg` (Maya numeral 8 on a jade tile), with PNG renders `favicon.png` (512), `favicon-32.png` and `apple-touch-icon.png`. Open Graph image: `public/og-image.png`.
 - No testimonials, usage numbers, or press. Do not invent any.
 
 ## Product Principles

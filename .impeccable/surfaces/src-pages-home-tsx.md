@@ -23,7 +23,7 @@ OWN-WORLD: Cool white ground, white panels with 1px slate borders, a solid deep-
 
 STORY: Visitor types a number (or taps glyphs), sees the Maya numeral and its place-value breakdown instantly, copies it, then scrolls to the chart, how-to and FAQ if they need to understand it.
 
-FIRST VIEWPORT: Header bar (logo, name, in-page nav). H1 plus one-line intro. Converter panel: direction tabs with swap, input on the left, live result on the right (stacked glyphs beside a place-value table), copy button. Desktop: right sidebar ad 300x600 sticky. Mobile: converter fully above the fold, ad below it.
+FIRST VIEWPORT: Header bar (logo, name, in-page nav). H1 plus one-line intro. Converter panel: direction tabs (switching carries the current number across), input on the left, live result on the right (stacked glyphs beside a place-value table), copy button. Desktop: right sidebar ad 300x600 sticky. Mobile: converter fully above the fold, ad below it.
 
 FORM: Category canon played straight (user pinned). Signature move: the place-value ledger, each glyph level aligned in a row with its power of 20, digit and subtotal, summing to the decimal. seed: none (direction pinned by user; per new-work a pinned direction beats the roll, so concept-seed was not run)
 
