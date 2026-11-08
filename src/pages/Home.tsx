@@ -180,7 +180,7 @@ export default function Home() {
                     <td className="num">{formatNumber(quotient)}</td>
                     <td className="num">{remainder}</td>
                     <td className="nowrap">
-                      20<sup>{index}</sup> ({formatNumber(placeValue(index))}s)
+                      20<sup>{index}</sup>
                     </td>
                   </tr>
                 ))}

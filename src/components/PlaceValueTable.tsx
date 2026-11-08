@@ -8,21 +8,23 @@ type Props = {
   onLevelHover?: (level: number | null) => void;
 };
 
-/** Formats a number with a line-break opportunity after each digit group comma. */
+/**
+ * Formats a number with a single line-break opportunity after the middle digit-group comma,
+ * so a very long place value wraps onto at most two even lines on narrow screens.
+ */
 function BreakableNumber({ value }: { value: number }) {
   const groups = formatNumber(value).split(',');
+  const breakAfter = Math.ceil(groups.length / 2) - 1;
   return (
     <>
       {groups.map((group, index) => {
         const isLast = index === groups.length - 1;
+        const comma = isLast ? '' : ',';
         return (
           <Fragment key={index}>
             {group}
-            {!isLast && (
-              <>
-                ,<wbr />
-              </>
-            )}
+            {comma}
+            {index === breakAfter && !isLast && <wbr />}
           </Fragment>
         );
       })}
